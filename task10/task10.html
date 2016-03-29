@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+body {margin: 0; padding: 0;}
+.container {margin: 0; padding: 20px; display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
+.div1 {width: 150px; height: 120px; border: 1px solid #f00; margin: 10px; flex: 0 0 auto;}
+.div2 {width: 150px; height: 100px; border: 1px solid #f00; margin: 10px; flex: 0 0 auto;}
+.div3 {width: 150px; height: 40px; border: 1px solid #f00; margin: 10px; flex: 0 0 auto;}
+.div4 {width: 150px; height: 200px; border: 1px solid blue;  margin: 10px; flex: 0 0 auto;}
+@media screen and (max-width: 640px){
+	.container {
+		margin: 0; 
+		padding: 10px; 
+		display: flex; 
+		flex-wrap: wrap;
+		 
+		align-items: flex-start;
+	}
+
+	.div4 {
+		order: -1;
+	}
+}
+</style>
+	<meta charset="UTF-8">
+	<title>task10</title>
+</head>
+<body>
+<div class="container">
+	<div class="div1">150*120</div>
+	<div class="div2">150*100</div>
+	<div class="div3">150*40</div>
+	<div class="div4">150*200</div>
+</div>
+</body>
+</html>
