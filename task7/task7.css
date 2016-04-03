@@ -1,0 +1,580 @@
+body, ul, p ,span {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+.container {
+	min-width: 1280px;
+}
+
+.header {
+	width: 100%;
+	height: 55px;
+	background-color: #ffffff;
+    position: relative;
+}
+
+.logo {
+	height: 30px;
+	width: 200px;
+	position: absolute;
+	margin-top: -15px;
+	top: 50%;
+	left: 60px;
+}    
+
+.logo img {
+	width: 30px;
+	height: 30px;
+	float: left;
+}
+
+.logo p {
+	margin-left: 10px;
+    float: left;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.login {
+	height: 55px;
+	float: right;
+	margin: 0 50px 0 10px;
+	box-sizing: border-box;
+}
+
+.login img {
+    margin-top:19px;
+    float:left;
+}
+
+.login p {
+	margin-left: 5px;
+	line-height: 55px;
+	float: left;
+}
+
+.login a {
+	color: #999;
+	display: block;
+	height: 51px;
+}
+
+.login a:hover {
+	color: red;
+	border-bottom: 4px solid red;
+}
+
+.nav {
+	float: right;
+	box-sizing: border-box;
+}
+
+.nav li {
+	margin: 0 20px;
+	line-height: 55px;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+.nav a {
+    display: block;
+    color: #999;
+    height: 51px;
+}
+
+.nav a:hover {
+	color: red;
+	border-bottom: 4px solid red;
+}
+
+.text1 {
+	height: 690px;
+	position: relative;
+}
+
+.pic {
+	position: absolute;
+	top: 0;
+    width:100%;
+    height:100%;
+	background: url(image/img01.jpg) ;
+	background-size: cover;
+    z-index: -1;
+}
+
+.text1-title p:first-child {
+    font-size: 60px;
+    font-family: "微软雅黑";
+    color: white;
+    margin-left: 115px;
+    margin-top: 230px;
+}
+
+.text1-title p:nth-child(2) {
+    font-size: 21px;
+    line-height: 30px;
+    font-family: "微软雅黑";
+    color: white;
+    margin-left: 120px;
+    margin-top: 20px;
+}
+
+.text1-title a {
+	display: block;
+	width: 320px;
+	height: 70px;
+	color: white;
+	background-color: red;
+	line-height: 70px;
+	font-size: 30px;
+	text-align: center;
+	margin-left: 120px;
+	margin-top: 70px; 
+}
+
+.icon {
+   width: 100%;
+   margin: 45px 0;
+   overflow: hidden;
+}
+
+.icon-info{
+	width: 25%;
+	float: left;
+	text-align: center;
+}
+
+.text1-content {
+    margin-bottom: 60px;
+    overflow: hidden;
+}
+
+.text1-info {
+	width: 25%;
+	height: 50px;
+	float: left;
+    text-align: center;
+    margin-left: -1px;
+}
+
+.text1-content div:not(:first-child) {
+    border-left: 1px solid #999;
+}
+
+.text1-info span {
+	display: block;
+	width: 190px;
+	margin: 0 auto;
+	color: #999;
+}
+
+.text3 {
+	height: 380px;
+	background-color: #dfdfdf;
+	text-align: center;
+}
+
+.text3 img {
+    margin-top: 90px;
+}
+
+.text3 p {
+	margin-top: 40px;
+    font-family: "微软雅黑";
+    font-size: 54px;
+    color: #999;
+}
+
+.text4 {
+	height: 340px;
+	text-align: center;
+	background: url(image/bg_map.jpg);
+	background-size: cover;
+}
+
+.text4-title {
+	font-size: 22px;
+	color: white;
+	padding-top: 50px;
+	margin-bottom: 10px;
+}
+
+.line {
+	width: 34px;
+	height: 2px;
+	background-color: white;
+	margin: 0 auto
+}
+
+.text4-info {
+	font-family: "微软雅黑";
+	color: white;
+	margin: 20px 0 50px 0;
+}
+
+.select-list input:not(:last-child){
+	width: 225px;
+	height: 34px;
+	margin-right: 10px;
+    padding-left: 10px;
+    border: none;
+    background-image: url(image/dropdown.png) ;
+    background-repeat: no-repeat;
+    background-position: 210px center;
+}
+
+.select-list input:last-child {
+	width: 225px;
+	height: 36px;
+	color: white;
+	border: none;
+	background-color: red;
+}
+
+.text5 {
+	width: 100%;
+	height: 500px;
+	background-color: #f7f7f7;
+	text-align: center;
+	padding-top: 100px;
+}
+
+.text5-pic {
+	display: inline-block;
+	margin: 0px 20px 0 20px;
+}
+
+.box {
+	background-color: white;
+	padding: 10px 7px;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+
+.text5-pic-title {
+	font-size: 14px;
+}
+
+.text5-pic-info {
+	font-size: 14px;
+	line-height: 34px;
+	color: #666;
+}
+
+.text5-pic-title-1 {
+	font-size: 24px;
+	letter-spacing: 30px;
+	font-weight: bolder;
+	text-indent: 30px;
+}
+
+.text6 {
+	overflow: hidden;
+}
+
+.text6-left {
+	width: 66.7%;
+	height: 585px;
+	background: url(image/img02.jpg);
+	background-size: cover;
+	float: left;
+	text-align: center;
+	color: white;
+}
+
+.new {
+	margin-top: 135px;
+	font-size: 48px;
+}
+
+.time {
+	font-size: 158px;
+}
+
+.date {
+	font-size: 20px;
+	line-height: 30px;
+}
+.text6-right {
+	width: 33.3%;
+	height: 585px;
+	float: left;
+	text-align: center;
+}
+
+.text6-right-title {
+	margin-top: 160px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.text6-right-title span {
+   font-size: 24px;
+   color: red;
+}
+
+.text6-right-content {
+	font-size: 12px;
+	color: #999;
+	text-align: left;
+	line-height: 30px;
+	margin: 0 65px;
+}
+
+.text6-right input {
+	width: 105px;
+	height: 35px;
+	color: red;
+	border: 1px solid red;
+	background-color: white;
+	margin-top: 50px;
+}
+
+.yuan div {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: 1px solid #999;
+	float: left;
+    margin: 60px 15px;
+}
+
+.yuan {
+	display: inline-block;
+	overflow: hidden;
+}
+.text7 {
+	overflow: hidden;
+}
+
+.text7-left {
+	width: 33.3%;
+	height: 520px;
+	background-color: #f55;
+	float: left;
+	text-align: center;
+}
+
+.text7-mid {
+	width: 33.3%;
+	height: 520px;
+	float: left;
+	text-align: center;
+}
+
+.text7-right {
+	width: 33.3%;
+	height: 520px;
+	background: url(image/img03.jpg) right center;
+	float: left;
+}
+
+.text7-left p {
+	font-size: 21px;
+	line-height: 30px;
+	margin-top: 170px;
+	color: white;
+}
+
+.text7-left div {
+	width: 25px;
+	height: 2px;
+	background-color: white;
+	margin: 25px auto;
+}
+
+.text7-left input {
+	width: 165px;
+	height: 40px;
+	color: white;
+	border: 1px solid white;
+	background-color: #f55;
+}
+
+.text7-mid p {
+	font-size: 21px;
+	line-height: 30px;
+	margin-top: 170px;
+	
+}
+
+.text7-mid div {
+	width: 25px;
+	height: 2px;
+	background-color: #f55;
+	margin: 25px auto;
+}
+
+.text7-mid input {
+	width: 165px;
+	height: 40px;
+	color: #f55;
+	border: 1px solid #f55;
+	background-color: white;
+}
+
+.text8 {
+	width: 100%;
+	height: 630px;
+	padding-top: 120px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.text8-title {
+	font-size: 21px;
+}
+
+.text8-line {
+	width: 35px;
+	height: 2px;
+	background-color: #f55;
+	margin: 10px auto;
+}
+
+.text8-info {
+	font-size: 12px;
+	color: #aaaaaa;
+	line-height: 20px;
+	margin-bottom: 100px;
+}
+
+.text8-left {
+	height: 282px;
+	width: 285px;
+	float: left;
+	text-align: left;
+}
+
+.text8-left-title {
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+
+
+.text8-left-content {
+	font-size: 12px;
+	color: #aaa;
+	line-height: 20px;
+}
+
+.more {
+	font-size: 12px;
+	text-align: right;
+	margin-bottom: 20px;
+
+}
+
+.text8-right {
+	width: 660px;
+	height: 282px;
+	float: left;
+	margin-left: 50px;
+}
+
+.text-right-name {
+    width: 294px;
+    height: 40px;
+	border: none;
+	background-color: #ededee;
+	margin-bottom: 14px;
+	margin-left: 15px;
+	padding: 0 0 0 17px;
+}
+
+.text8-right textarea {
+	width: 607px;
+	height: 100px;
+	background-color: #ededee;
+	border: none;
+	margin-left: 15px;
+	padding: 10px 17px;
+	resize : none;
+}
+
+.text8-sub {
+	border: none;
+	width: 641px;
+	height: 40px;
+	background-color: #ededee;
+    font-size: 14px;
+    margin-left: 15px;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.text8-content {
+	display: inline-block;
+}
+
+.footer-content {
+    height: 265px;
+    padding-top: 90px;
+    background-color: #32353e;
+    text-align: center;
+}
+
+.footer-content p:first-child {
+	font-size: 21px;
+	color: white;
+	line-height: 25px;
+}
+
+.footer-content p:nth-child(2) {
+    font-size: 12px;
+	color: white;
+	line-height: 20px;
+	margin-bottom: 20px;
+}
+
+.footer-content-email {
+	display: inline-block;
+	overflow: hidden;
+}
+
+.email {
+	width: 410px;
+	height: 40px;
+	border: none;
+	padding: 0 10px;
+	font-size: 15px;
+	float: left;
+}
+
+.footer-content-sub {
+	width: 80px;
+	height: 40px;
+	color: white;
+	border: none;
+	background-color: #777;
+	padding: 0;
+    float: left;
+}
+
+.footer-icon img {
+	margin: 30px 10px;
+}
+
+.footer-bottom {
+	height: 60px;
+	background-color: #2f3038;
+}
+
+.footer-bottom p:first-child {
+	font-size: 12px;
+	color: white;
+	float: left;
+	margin: 30px 0 0 100px;
+}
+
+.footer-bottom p:last-child {
+	font-size: 12px;
+	color: white;
+	float: right;
+	margin: 30px 20px 0 0;
+}
