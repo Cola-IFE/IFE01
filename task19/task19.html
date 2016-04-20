@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+#list {margin: 0; padding: 0;}
+#list li {display: inline-block; margin: 200px 2px 2px 0; width: 18px; background-color: red; color: white; line-height: 30px; text-align: center; vertical-align: bottom;}
+
+</style>
+	<meta charset="UTF-8">
+	<title>DOM操作</title>
+</head>
+<body>
+	<input id="input" type="text">
+	<button id="left-in">左侧入</button>
+	<button id="right-in">右侧入</button>
+	<button id="left-out">左侧出</button>
+	<button id="right-out">右侧出</button>
+    &nbsp;
+    <button id="random">随机生成一组数据</button>
+    <button id="sort">排序</button>
+
+	<ul id="list"></ul>
+</body>
+<script>
+window.onload=function (){
+	var oInput=document.getElementById('input');
+	var oUl=document.getElementById('list');
+	var oLi=oUl.getElementsByTagName('li');
+	var lfetIn=document.getElementById('left-in');
+	var lfetOut=document.getElementById('left-out');
+	var rightIn=document.getElementById('right-in');
+	var rightOut=document.getElementById('right-out');
+    var random=document.getElementById('random');
+    var sort=document.getElementById('sort');
+    
+    var arr=[];//用来存储li标签数据
+
+    //左侧入并且把数据存入数组
+    lfetIn.onclick=function(){
+        if(oLi.length>60){                 //判断数据是否已满
+            alert('数据已满，请先删除');
+        }else if(!(/^[0-9]+$/).test(oInput.value)||oInput.value<=10||oInput.value>=100){  
+            alert('请输入一个大于10小于100的整数');
+        }else{
+            var li=document.createElement('li');
+            arr.unshift(oInput.value);
+            li.innerHTML=oInput.value;
+            li.style.height=oInput.value*3+'px';
+            oUl.insertBefore(li,oUl.firstChild);
+            
+        };
+    	console.log(arr);
+        return arr;
+    };	
+    
+    //左侧出并删除数据
+    lfetOut.onclick=function(){
+        if(!oLi.length==0){
+            arr.shift();
+    		oUl.removeChild(oUl.firstChild);
+    	}else{
+    		alert('没有可以删除的选项');
+    	};
+        console.log(arr);
+        return arr;
+        
+    };
+    
+    //右侧入存储数据
+    rightIn.onclick=function(){
+    	 if(oLi.length>60){                 //判断数据是否已满
+            alert('数据已满，请先删除');
+        }else if(!(/^[0-9]+$/).test(oInput.value)||oInput.value<=10||oInput.value>=100){  
+            alert('请输入一个大于10小于100的整数');
+        }else{
+            var li=document.createElement('li');
+            arr.push(oInput.value);
+            li.innerHTML=oInput.value;
+            li.style.height=oInput.value*3+'px';
+    		oUl.appendChild(li);
+        };
+        console.log(arr);
+        return arr;
+        
+    };  
+    
+
+    //右侧出并删除数据
+    rightOut.onclick=function(){
+        if(!oLi.length==0){
+            arr.pop();
+    		oUl.removeChild(oUl.lastChild);
+    	}else{
+    		alert('没有可以删除的选项');
+    	};
+        console.log(arr);
+        return arr;
+        
+    };
+
+    
+    //随机生成按钮加事件
+    random.onclick=function(){
+        randomData();
+        console.log(arr);
+    };
+
+    //随机生成函数
+    function randomData(){
+         arr=[];
+        for(var i = 0; i < 20; i++) {
+            arr.push(parseInt(Math.random() * 88) + 11);
+            
+        };
+
+        rander(arr);
+    };
+
+    //渲染图表
+    function rander(data){
+        var str='';
+        for(var i=0;i<data.length;i++){
+            str+='<li style="height:'+data[i]*3+'px;">'+data[i]+'</li>';
+            oUl.innerHTML=str;
+        };
+    };
+ 
+    sort.onclick=function(){
+        sortData();
+    };
+    
+   //排序可是化，实现原理基本就是每循环一次就交换一次li的高度与值
+    function sortData(){
+        
+        var len = arr.length,
+            i = 0,
+            j = 0,
+            temp,
+            clear = null;
+        clear = setInterval(run,15);
+
+        function run() {
+            if(i < len ){
+                if(j < len - i -1) {
+                    if(arr[j] > arr[j+1]) {
+                        temp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = temp;
+                        oLi[j].innerHTML=arr[j];
+                        oLi[j+1].innerHTML=arr[j+1];
+                        oLi[j].style.height = arr[j] * 3 + 'px';
+                        oLi[j+1].style.height = arr[j+1] * 3+ 'px';
+                    }
+                    j++;
+                    return; 
+                } else {
+                    j = 0;
+                }
+                i++;
+            } else {
+                clearInterval(clear);
+            }
+
+        }
+    } 
+
+}; 
+
+
+</script>
+</html>
