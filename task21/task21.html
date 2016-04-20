@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+
+#tagDiv div {margin: 10px; padding: 5px; background-color: blue; text-align: center; display: inline-block; color: white; }
+
+
+#list div {
+      margin: 10px; padding: 5px; background-color: red; text-align: center; display: inline-block; color: white;
+      font-weight: bold;
+    }
+</style>
+	<meta charset="UTF-8">
+	<title>DOM操作</title>
+</head>
+<body>
+    <div>
+    Tag:<input type="text" id="tag" />
+    <div id=tagDiv></div>
+    </div>
+    <br/>
+    <div>
+	<textarea id="text"></textarea> 
+    <br/>
+	<button id="submit">确认兴趣爱好</button>
+	
+
+	<div id="list"></div>
+    </div>
+</body>
+<script>
+window.onload=function (){
+    var tag=document.getElementById('tag');
+    var tagDiv=document.getElementById('tagDiv');
+    var oDiv=tagDiv.getElementsByTagName('div');
+
+	var oText=document.getElementById('text');
+	var textDiv=document.getElementById('list');
+	var sum=document.getElementById('submit');
+
+
+    function addEvent(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent){
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        }
+    };
+
+
+    var arr=[];             //建立一个数组用来存储Tag数据，并判断是否重复；
+//Tag函数
+	function init(event){
+        var event = event || window.event;
+        var text=tag.value;
+        var reg=/[,，、\s]+/;
+        var tagContent;
+
+        //判断是否输入了条件符号，并分割出需要的字符
+        if(reg.test(text)){   
+            tagContent = text.split(reg)[0].trim();    
+        }else if(event.keyCode===13){
+            tagContent = text.trim();
+        };
+           
+        //取出的数据如果是需要的渲染       
+        if(tagContent){
+            if(!isRepeat(arr,tagContent)){
+               arr.unshift(tagContent);
+               tag.value='';   
+            }else{
+                tag.value='';
+            }
+        };
+
+        //取出数据如果为空
+        if(tagContent==''){
+             tag.value='';
+        };
+
+        rander(tagDiv,arr);
+   };
+
+
+//判断是否重复
+    function isRepeat(arr,x){
+        falg=false;
+        for(var i=0;i<arr.length;i++){
+
+            if(arr[i]==x){
+                falg=true;
+            }
+        }
+        return falg;
+    };
+//tagdiv 添加删除函数
+    function mouseoverTag(){
+       
+            for(var i=0;i<oDiv.length;i++){
+            
+            oDiv[i].onmouseover=function(){
+                this.innerHTML="点击删除"+this.innerHTML;
+                this.style.background='red';
+            };
+
+            oDiv[i].onmouseout=function(){
+                this.innerHTML=this.innerHTML.slice(4);
+                this.style.background='blue';
+            };
+
+            oDiv[i].onclick=function(i){      //这里这个闭包问题，自己一直解决不了，在review别人代码发现这个方法，很是合适！
+                
+                return function(){
+                    arr.splice(i,1);
+                    rander(tagDiv,arr);
+                }   
+              
+            }(i)
+        };
+    }
+
+    var data=[];  //用来存储爱好的数据 
+
+ //将爱好进行处理，并且去重、渲染   
+    function getData(){
+        text=oText.value;
+        x=text.split(/\s|,|，|\u3001|\003B/g);
+        var temp=x.filter(function(item){
+            return item!=='';
+        });
+
+        data = clearRepeat(data.concat(temp));
+        if(data.length>10){
+            data=data.splice(-10);
+        }
+        rander(textDiv,data);
+
+        oText.value='';
+    };
+  //对数组去重
+    function clearRepeat(arr) {
+        var obj = {};
+        var result = [];
+        for (var i in arr) {
+           if (!obj.hasOwnProperty(arr[i])) {
+               result.push(arr[i]);
+               obj[arr[i]] = 1;
+            }
+        }
+        return result;
+    };
+
+       //渲染图表
+    function rander(box,data){
+        var str='';
+        for(var i=0;i<data.length;i++){
+            str+='<div>'+data[i]+'</div>';
+            
+        };
+        box.innerHTML=str;
+            
+    };
+
+//添加事件绑定
+    addEvent(tag,"keyup",init);
+    addEvent(tagDiv,"mouseover",mouseoverTag);
+    addEvent(sum,"click",getData);
+
+  
+ 
+}; 
+
+
+</script>
+</html>
