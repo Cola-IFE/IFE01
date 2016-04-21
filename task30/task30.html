@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+body {margin: 0;padding: 0;}
+table {margin: 50px auto;}
+td {padding: 10px 0; }
+td:first-child {width: 100px;padding-right: 20px; text-align: right;}
+input {width: 500px; height: 48px; border: 1px solid #ccc; border-radius: 5px; padding: 0;font-size: 18px;line-height: 48px;}
+#btn {background-color: #2563AD; color: #fff; height: 50px; width: 100px; border: none; border-radius: 5px;text-align: right;font-size: 20px; text-align: center;}
+
+</style>
+	<meta charset="UTF-8">
+	<title>单个表单校验</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>姓名</td>
+			<td><input id="name" type="text"><br/><span id="nameinfo"></span></td>
+		</tr>
+		<tr>
+			<td>密码</td>
+			<td><input id="password" type="password"><br/><span id="passwordinfo"></span></td>
+		</tr>
+		<tr>
+			<td>确认密码</td>
+			<td><input id="password-confirm" type="password"><br/><span id="password-again"></span></td>
+		</tr>
+		<tr>
+			<td>邮箱</td>
+			<td><input id="email" type="text"><br/><span id="emailinfo"></span></td>
+		</tr>
+		<tr>
+			<td>手机</td>
+			<td><input id="phone" type="text"><br/><span id="phoneinfo"></span></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="button" id="btn" value="提交"></td>
+		</tr>
+		
+	</table>
+</body>
+<script>
+
+    function addEvent(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent){
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        }
+    };
+
+
+var names=document.getElementById('name');
+var nameInfo=document.getElementById('nameinfo');
+var password=document.getElementById('password');
+var passwordInfo=document.getElementById('passwordinfo');
+var passwordConfirm=document.getElementById('password-confirm');
+var passwordAgain=document.getElementById('password-again');
+var email=document.getElementById('email');
+var emailInfo=document.getElementById('emailinfo');
+var phone=document.getElementById('phone');
+var phoneInfo=document.getElementById('phoneinfo');
+var btn=document.getElementById('btn');
+
+//那么输入框失去焦点事件
+function checkName(){
+    var sName=names.value;
+   if(countLength(sName)==0){
+		nameInfo.innerHTML='姓名不能为空';
+		nameInfo.style.color='red';
+		names.style.borderColor='red';
+	}else if(countLength(sName)<4){
+		nameInfo.innerHTML='名称过短，请输入4个字符以上';
+		nameInfo.style.color='red';
+		names.style.borderColor='red';
+	}else if(countLength(sName)>=4 && countLength(sName)<=16){
+		nameInfo.innerHTML='名称可用';
+		nameInfo.style.color='green';
+		names.style.borderColor='green';
+	}else if(countLength(sName)>16){
+        nameInfo.innerHTML='名称过长，不能超过16个字符';
+		nameInfo.style.color='red';
+		names.style.borderColor='red';
+	}
+};
+//密码检测
+function checkPassword(){
+	var sPassword=password.value;
+	if(/[^0-9a-z]/gi.test(sPassword)){
+        passwordInfo.innerHTML='密码只能为6到16位英文或数字';
+		passwordInfo.style.color='red';
+		password.style.borderColor='red';
+	}else if(sPassword.length==''){
+		passwordInfo.innerHTML='密码不能为空';
+		passwordInfo.style.color='red';
+		password.style.borderColor='red';
+	}else if(sPassword.length<6){
+		passwordInfo.innerHTML='密码过短';
+		passwordInfo.style.color='red';
+		password.style.borderColor='red';
+	}else if(sPassword.length>=6 && sPassword.length<=16){
+		passwordInfo.innerHTML='密码可用';
+		passwordInfo.style.color='green';
+		password.style.borderColor='green';
+	}else if(sPassword.length>16){
+		passwordInfo.innerHTML='密码过长';
+		passwordInfo.style.color='red';
+		password.style.borderColor='red';
+	}
+};
+//密码确认
+function checkPasswordAgain(){
+    var sPasswordConfirm=passwordConfirm.value;
+    var sPassword=password.value;
+    if(sPasswordConfirm==''){
+    	passwordAgain.innerHTML='密码不能为空';
+		passwordAgain.style.color='red';
+		passwordConfirm.style.borderColor='red';
+    }else if(sPasswordConfirm!==sPassword){
+    	passwordAgain.innerHTML='两次输入密码不相同';
+		passwordAgain.style.color='red';
+		passwordConfirm.style.borderColor='red';
+    }else{
+    	passwordAgain.innerHTML='密码可用';
+		passwordAgain.style.color='green';
+		passwordConfirm.style.borderColor='green';
+    }
+};
+//邮箱判断
+function checkEmail(){
+    var sEmail=email.value;
+    if(sEmail==''){
+        emailInfo.innerHTML='请输入邮箱';
+		emailInfo.style.color='red';
+		email.style.borderColor='red';
+    }else if(/^[\w]+@([a-z0-9]+\.)+[a-z0-9]{2,4}$/i.test(sEmail)){
+    	emailInfo.innerHTML='验证通过';
+		emailInfo.style.color='green';
+		email.style.borderColor='green';
+    }else {
+    	emailInfo.innerHTML='邮箱格式错误';
+		emailInfo.style.color='red';
+		email.style.borderColor='red';	
+    }
+};
+
+function checkPhone(){
+	var sPhone=phone.value;
+	if(sPhone==''){
+		phoneInfo.innerHTML='请输入一个电话号码';
+		phoneInfo.style.color='red';
+		phone.style.borderColor='red';
+	}else if(/^\d{11}$/.test(sPhone)){
+		phoneInfo.innerHTML='号码可用';
+		phoneInfo.style.color='green';
+		phone.style.borderColor='green';
+	}else{
+		phoneInfo.innerHTML='这不是一个电话号码';
+		phoneInfo.style.color='red';
+		phone.style.borderColor='red';
+	}
+};
+//判断字符长度
+    function countLength(str) {
+		var inputLength = 0;
+		for (var i = 0; i < str.length; i++) {
+			var charCode = str.charCodeAt(i);
+			if (charCode >= 0 && charCode <=128) {
+				inputLength += 1;
+			} else {
+				inputLength += 2;
+			}
+		}
+		return inputLength;
+	};
+
+//时间绑定
+addEvent(names,"focus",function(){
+	nameInfo.innerHTML='请输入一个4～16字符的名称';
+	nameInfo.style.color='#ccc';
+});
+addEvent(names,"blur",checkName);
+
+addEvent(password,"focus",function(){
+	passwordInfo.innerHTML='请输入只包含英文或数字的6～16位字符';
+	passwordInfo.style.color='#ccc';
+});
+addEvent(password,"blur",checkPassword);
+
+addEvent(passwordConfirm,"focus",function(){
+	passwordAgain.innerHTML='请再输入一次密码';
+	passwordAgain.style.color='#ccc';
+});
+addEvent(passwordConfirm,"blur",checkPasswordAgain);
+
+addEvent(email,"focus",function(){
+	emailInfo.innerHTML='请输入一个合法邮箱地址';
+	emailInfo.style.color='#ccc';
+});
+addEvent(email,"blur",checkEmail);
+
+addEvent(phone,"focus",function(){
+	phoneInfo.innerHTML='请输入一个电话号码';
+	phoneInfo.style.color='#ccc';
+});
+addEvent(phone,"blur",checkPhone);
+
+addEvent(btn,"click",function(){
+	if(names.style.borderColor=='green' && password.style.borderColor=='green' && passwordConfirm.style.borderColor=='green' && email.style.borderColor=='green' && phone.style.borderColor=='green')
+	{
+	        alert('提交成功');
+	}
+	else
+	{
+			alert('输入有误');
+	};
+	
+});
+</script>
+</html>
